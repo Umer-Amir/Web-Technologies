@@ -1,0 +1,68 @@
+CMD>
+
+mongosh
+
+MONGOSH>
+
+mongoimport -d academic -c courses --file JSON/courses.json --jsonArray
+
+-----------------------------------------------
+The command mongoimport -d academic -c courses --file JSON/courses.json --jsonArray is used to import data into a MongoDB database using the mongoimport utility. Let's break down this command to understand each part:
+
+mongoimport:
+
+This is the command-line utility provided by MongoDB to import data from a file into a MongoDB collection.
+-d academic:
+
+-d stands for "database". This option specifies the name of the database to which you want to import the data.
+academic is the name of the database. If this database does not exist, MongoDB will create it.
+-c courses:
+
+-c stands for "collection". This option specifies the name of the collection within the database where the data will be imported.
+courses is the name of the collection. If this collection does not exist in the database, MongoDB will create it.
+--file JSON/courses.json:
+
+--file is an option that specifies the path to the input file containing the data to be imported.
+JSON/courses.json is the path to the file. This path indicates that there is a folder named JSON and inside this folder, there is a file named courses.json. This file should contain the JSON data that you want to import.
+--jsonArray:
+
+This option indicates that the JSON data in the file is formatted as an array of documents.
+MongoDB expects the JSON file to contain a series of JSON documents, one per line, by default. If your JSON data is formatted as a single array of documents, you need to include this option to correctly parse and import the data.
+In summary, this command is used to import data from the courses.json file, which is expected to contain a JSON array of documents, into the courses collection of the academic database in MongoDB. If the courses collection or the academic database does not exist, they will be created automatically.
+-----------------------------------------------
+
+show dbs
+
+use academic
+
+ACADEMI
+
+show collections
+
+db.courses
+
+db.courses.findOne({ courseid: 1 });
+
+db.courses.find( {}, {title: 1} );
+
+db.courses.find( {}, {title: 1, _id : 0} );
+
+db.courses.find( {semester: 1}, {title: 1, _id : 0} );
+
+db.courses.find().limit( 10 ).sort( {} )
+
+for(let col in db.courses.findOne()){print(col)}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+The provided JavaScript code defines three functions, `first`, `second`, and `third`, and then executes a chain of asynchronous operations using Promises and the `then` method. Let's break down the code step by step:
+
+1. `function first()`:
+   - This function creates and returns a new Promise.
+   - The Promise executor function takes two arguments, `resolve` and `reject`.
+   - The executor function immediately calls `resolve` with the string "first call".
+   - Since `reject` is not used, this Promise will always resolve successfully.
+
+2. `function second(callback)`:
+   - Similar to `first`, this function returns a new Promise.
+   - Inside, it uses the `fetch` API to make an HTTP GET request to "https://jsonplaceholder.typicode.com/users/1".
+   - The response from `fetch` is processed to extract JSON content using `.then((res) => res.json())`.
+   - Another `.then` is chained to handle the JSON content, resolving the Promise with a string that includes the user's name (`user.name`).
+   - The `callback` parameter is not used in this function.
+
+3. `function third(callback)`:
+   - This function also creates and returns a new Promise.
+   - It immediately resolves with the string "third call".
+   - The `callback` parameter is again not used.
+
+4. Execution Flow:
+   - The `first` function is called and its resulting Promise is handled.
+   - When the Promise from `first` resolves, `console.log(data)` logs "first call".
+   - The next `then` in the chain calls the `second` function.
+   - Once the Promise from `second` resolves, it logs the user data fetched from the API.
+   - The `then` following `second` calls the `third` function.
+   - Finally, when the Promise from `third` resolves, "third call" is logged.
+
+Note:
+- The `callback` parameters in `second` and `third` are not utilized in this code.
+- The code demonstrates asynchronous operations and how Promises can be chained using `then`.
+- Error handling (using `catch`) is not implemented in this Promise chain.
